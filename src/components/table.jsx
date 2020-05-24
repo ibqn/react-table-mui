@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import { styled } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 
 import Table from '@material-ui/core/Table'
 import TableHead from '@material-ui/core/TableHead'
@@ -13,6 +13,12 @@ import TableContainer from '@material-ui/core/TableContainer'
 import { useTable } from 'react-table'
 
 import makeData from '../utils/make-data'
+
+const useStyles = makeStyles({
+  table: {
+    minWidth: 650,
+  },
+})
 
 const DataTable = () => {
   const columns = useMemo(
@@ -62,13 +68,15 @@ const DataTable = () => {
     data,
   })
 
+  const classes = useStyles()
+
   // console.log(getTableProps())
   // console.log(headerGroups)
-  console.log(data)
+  // console.log(data)
 
   return (
     <TableContainer component={Paper}>
-      <Table {...getTableProps()}>
+      <Table className={classes.table} {...getTableProps()}>
         <TableHead>
           {headerGroups.map((headerGroup) => (
             <TableRow {...headerGroup.getHeaderGroupProps()}>
