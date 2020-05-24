@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react'
 
-import CssBaseline from "@material-ui/core/CssBaseline"
+import CssBaseline from '@material-ui/core/CssBaseline'
 
-import Table from "./components/table"
+import Table from './components/table'
 
 const App = () => {
   return (
