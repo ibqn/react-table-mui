@@ -12,6 +12,8 @@ import TableContainer from '@material-ui/core/TableContainer'
 
 import { useTable } from 'react-table'
 
+import TableToolbar from './table-toolbar'
+
 import makeData from '../utils/make-data'
 
 const useStyles = makeStyles({
@@ -66,6 +68,7 @@ const DataTable = () => {
 
   return (
     <TableContainer component={Paper}>
+      <TableToolbar />
       <Table className={classes.table} {...getTableProps()}>
         <TableHead>
           {headerGroups.map((headerGroup) => (
