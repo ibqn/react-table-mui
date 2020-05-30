@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import PropTypes from 'prop-types'
+
 import Tooltip from '@material-ui/core/Tooltip'
 import IconButton from '@material-ui/core/IconButton'
 import AddIcon from '@material-ui/icons/Add'
@@ -39,6 +41,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const AddUserDialog = (props) => {
+  const { addUserHandler } = props
+
   const classes = useStyles()
 
   const [user, setUser] = useState(initialUser)
@@ -54,7 +58,10 @@ const AddUserDialog = (props) => {
     // console.log('user', { ...user, [name]: value })
   }
 
-  const handleAdd = () => {}
+  const handleAdd = () => {
+    addUserHandler(user)
+    setUser(initialUser)
+  }
 
   return (
     <div>
@@ -138,6 +145,10 @@ const AddUserDialog = (props) => {
       </Dialog>
     </div>
   )
+}
+
+AddUserDialog.propTypes = {
+  addUserHandler: PropTypes.func.isRequired,
 }
 
 export default AddUserDialog

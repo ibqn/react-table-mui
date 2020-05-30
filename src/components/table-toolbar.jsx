@@ -1,7 +1,7 @@
 import React from 'react'
 
 import clsx from 'clsx'
-import Proptypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -18,9 +18,11 @@ const useToolbarStyles = makeStyles((theme) => ({
 
 const TableToolbar = (props) => {
   const classes = useToolbarStyles()
+  const addUserHandler = () => {}
+
   return (
     <Toolbar>
-      <AddUserDialog />
+      <AddUserDialog addUserHandler={addUserHandler} />
       <Typography className={classes.title} variant="h6">
         Users
       </Typography>
