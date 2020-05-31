@@ -48,19 +48,21 @@ const AddUserDialog = (props) => {
   const [user, setUser] = useState(initialUser)
   const [open, setOpen] = useState(false)
 
+  const [addMultiple, setAddMultiple] = useState(false)
+
+  const handleSwitch = ({ target: { checked } }) => setAddMultiple(checked)
+
   const handleClickOpen = () => setOpen(true)
 
   const handleClose = () => setOpen(false)
 
-  const handleChange = (name) => ({ target: { value } }) => {
-    // console.log('on change', name, 'value is', value)
+  const handleChange = (name) => ({ target: { value } }) =>
     setUser({ ...user, [name]: value })
-    // console.log('user', { ...user, [name]: value })
-  }
 
   const handleAdd = () => {
     addUserHandler(user)
     setUser(initialUser)
+    setOpen(addMultiple)
   }
 
   return (
@@ -133,7 +135,7 @@ const AddUserDialog = (props) => {
         </DialogContent>
         <DialogActions>
           <Tooltip title="Add multiple users">
-            <Switch />
+            <Switch value={addMultiple} onChange={handleSwitch} />
           </Tooltip>
           <Button onClick={handleClose} color="primary">
             Cancel
